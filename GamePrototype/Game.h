@@ -1,5 +1,8 @@
 #pragma once
 #include "BaseGame.h"
+#include "Player.h"
+#include "Energie.h"
+#include "Furnace.h"
 class Game : public BaseGame
 {
 public:
@@ -22,6 +25,10 @@ public:
 	void ProcessMouseUpEvent( const SDL_MouseButtonEvent& e ) override;
 
 private:
+
+	Player* m_pPlayer{ new Player(GetViewPort()) };
+	Energie* m_pEnergie{ new Energie(GetViewPort()) };
+	Furnace* m_pFurnace{ new Furnace(GetViewPort(), *m_pEnergie) };
 
 	// FUNCTIONS
 	void Initialize();
